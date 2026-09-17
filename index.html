@@ -5,41 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Radio Montesarchio</title>
 <style>
-body{background:#111;color:#fff;font-family:sans-serif;display:flex;justify-content:center;align-items:center;min-height:100vh;margin:0}
-.card{background:#222;padding:30px;border-radius:20px;text-align:center;max-width:350px;width:90%;box-shadow:0 10px 30px rgba(0,0,0,.5)}
-#pb{width:90px;height:90px;border-radius:50%;border:none;background:#ff0055;color:#fff;font-size:40px;cursor:pointer;margin-top:20px}
-a{color:#ff0055}
+  body{margin:0;background:#0f0f0f;color:white;font-family:Arial;display:flex;align-items:center;justify-content:center;min-height:100vh;padding:20px}
+  .box{background:#1a1a1a;border-radius:20px;padding:30px;max-width:500px;width:100%;text-align:center;border:2px solid #e81e4d}
+  h1{color:#e81e4d}
+  .cstrEmbed{background:white;border-radius:12px;padding:10px}
 </style>
 </head>
 <body>
-<div class="card">
-<h2>Radio Montesarchio</h2>
-<div style="font-size:12px;opacity:.6" id="st">Pronto</div>
-<div style="font-size:11px;opacity:.5" id="ct">00:00</div>
-<button id="pb">▶</button>
-<p style="font-size:12px;margin-top:20px">Se non parte su Chrome:<br><a id="dl" href="http://sapircast.caster.fm:17620/rIZ3" target="_blank">Clicca qui per ascolto diretto</a></p>
-<audio id="a" preload="none" crossorigin="anonymous"></audio>
+<div class="box">
+<h1>🔴 Radio Montesarchio</h1>
+<p>100% Radio Online - In Diretta</p>
+
+<div data-type="newStreamPlayer" data-publicToken="4137a736-34ca-4838-ac0e-fed11d40c0c9" data-theme="light" data-color="e81e4d" data-channelId="" data-rendered="false" class="cstrEmbed"><a href="https://www.caster.fm">Shoutcast Hosting</a></div><script src="//cdn.cloud.caster.fm//widgets/embed.js"></script>
+
+<p style="color:#0f0;margin-top:20px">● IN ONDA ORA</p>
 </div>
-<script>
-const STREAM_HTTP="http://sapircast.caster.fm:17620/rIZ3";
-const STREAM_HTTPS="https://sapircast.caster.fm:17620/rIZ3";
-let pl=false,sec=0;
-const a=document.getElementById('a'), pb=document.getElementById('pb'), st=document.getElementById('st'), ct=document.getElementById('ct');
-pb.onclick=()=>{
-if(!pl){
-st.textContent="Connessione...";
-// Prova prima https, poi http
-a.src=STREAM_HTTPS;
-a.type="audio/mpeg";
-a.play().then(()=>{pl=true;pb.textContent="II";st.textContent="ON AIR - HTTPS"}).catch(()=>{
-console.log("HTTPS fallito, provo HTTP");
-a.src=STREAM_HTTP;
-a.play().then(()=>{pl=true;pb.textContent="II";st.textContent="ON AIR - HTTP"}).catch(e=>{st.textContent="Errore Chrome: apri link diretto sotto";});
-});
-}else{a.pause();a.src="";pl=false;pb.textContent="▶";st.textContent="In pausa";sec=0;ct.textContent="00:00";}
-};
-a.addEventListener('error',()=>{st.textContent="Bloccato da Chrome. Usa link diretto sotto";});
-setInterval(()=>{if(!pl)return;sec++;ct.textContent=String(Math.floor(sec/60)).padStart(2,'0')+":"+String(sec%60).padStart(2,'0');},1000);
-</script>
 </body>
 </html>
