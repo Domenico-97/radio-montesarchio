@@ -7,33 +7,42 @@
 <style>
 body{background:#111;color:#fff;font-family:sans-serif;display:flex;justify-content:center;align-items:center;min-height:100vh;margin:0}
 .card{background:#222;padding:30px;border-radius:20px;text-align:center;max-width:350px;width:90%}
-.onair{color:#0f0;border:1px solid #0f0;display:inline-block;padding:4px 10px;border-radius:20px;font-size:12px;margin-bottom:15px}
-#pb{width:80px;height:80px;border-radius:50%;border:none;background:#ff0055;color:#fff;font-size:35px;cursor:pointer;margin-top:20px}
-.track{margin:15px 0}
-.btns{display:flex;gap:10px;justify-content:center;margin-top:15px}
-.btn{background:#333;padding:8px 15px;border-radius:20px;font-size:12px}
+#pb{width:90px;height:90px;border-radius:50%;border:none;background:#ff0055;color:#fff;font-size:40px;cursor:pointer;margin-top:20px}
 </style>
 </head>
 <body>
 <div class="card">
-<div class="onair">ON AIR</div>
-<div class="track"><small>IN RIPRODUZIONE</small><h2>Radio Montesarchio</h2><div style="font-size:11px;opacity:.5" id="ct">00:00</div></div>
-<div class="btns"><div class="btn">Favoriti</div><div class="btn">Condividi</div></div>
+<h2>Radio Montesarchio</h2>
+<div style="font-size:12px;opacity:.6" id="st">Pronto</div>
+<div style="font-size:11px;opacity:.5;margin-top:5px" id="ct">00:00</div>
 <button id="pb">▶</button>
 <audio id="a" preload="none" crossorigin="anonymous"></audio>
+<div style="margin-top:15px;font-size:10px;opacity:.4">Se non parte, apri Caster dal PC</div>
 </div>
 <script>
-const STREAM="https://sapircast.caster.fm:17620/prlZ3";
-let pl=false,sec=0;
-const a=document.getElementById('a'), pb=document.getElementById('pb'), ct=document.getElementById('ct');
-pb.onclick=()=>{
-if(!pl){
-a.src=STREAM;
-a.play().then(()=>{pl=true;pb.textContent="II"}).catch((e)=>{alert("Errore: "+e.message)});
-}else{
-a.pause();a.src="";pl=false;pb.textContent="▶";sec=0;ct.textContent="00:00";
+const STREAMS=[
+"https://sapircast.caster.fm:17620/prlZ3",
+"http://sapircast.caster.fm:17620/prlZ3"
+];
+let pl=false,sec=0,idx=0;
+const a=document.getElementById('a'), pb=document.getElementById('pb'), ct=document.getElementById('ct'), st=document.getElementById('st');
+function tryPlay(){
+st.textContent="Connessione... "+STREAMS[idx];
+a.src=STREAMS[idx];
+a.play().then(()=>{
+pl=true;pb.textContent="II";st.textContent="ON AIR - In riproduzione";
+}).catch((e)=>{
+st.textContent="Provo altro server...";
+idx=(idx+1)%STREAMS.length;
+if(idx!==0) setTimeout(tryPlay,800);
+else st.textContent="Errore: "+e.message+" - Avvia Caster sul PC!";
+});
 }
+pb.onclick=()=>{
+if(!pl){ tryPlay(); }
+else{ a.pause();a.src="";pl=false;pb.textContent="▶";sec=0;ct.textContent="00:00";st.textContent="In pausa"; }
 };
+a.onerror=()=>{ st.textContent="Errore stream - provo altro..."; idx=(idx+1)%STREAMS.length; if(!pl) tryPlay(); };
 setInterval(()=>{if(!pl)return;sec++;let m=String(Math.floor(sec/60)).padStart(2,'0');let s=String(sec%60).padStart(2,'0');ct.textContent=m+":"+s;},1000);
 </script>
 </body>
