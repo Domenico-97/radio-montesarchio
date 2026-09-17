@@ -5,34 +5,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Radio Montesarchio - Live</title>
 <style>
-body{margin:0;background:#0a0a0a;color:white;font-family:Arial,sans-serif;text-align:center;padding:20px}
-.box{max-width:500px;margin:40px auto;background:#1e1e1e;border-radius:20px;padding:30px;border:3px solid #e81e4d;box-shadow:0 0 20px rgba(232,30,77,0.3)}
-h1{color:#e81e4d;margin:0 0 10px;font-size:28px}
-audio{width:100%;margin-top:25px;height:54px;border-radius:10px}
-.live{color:#00ff00;font-weight:bold;margin-top:20px;font-size:18px;animation:blink 1s infinite}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
-p{color:#ccc}
+body{margin:0;background:#0a0a0a;color:white;font-family:Arial;text-align:center;padding:20px}
+.box{max-width:500px;margin:40px auto;background:#1a1a1a;border-radius:20px;padding:30px;border:3px solid #e81e4d;box-shadow:0 0 30px #e81e4d55}
+h1{color:#e81e4d;margin:0;font-size:28px}
+audio{width:100%;margin:20px 0;height:50px}
+.btn{display:block;background:#e81e4d;color:white;padding:18px;border-radius:30px;text-decoration:none;font-weight:bold;font-size:20px;margin:20px 0}
+.live{color:#00ff00;font-weight:bold;animation:blink 1s infinite}
+@keyframes blink{50%{opacity:0.3}}
 </style>
 </head>
 <body>
 <div class="box">
 <h1>🔴 Radio Montesarchio</h1>
-<p>100% Musica e Diretta Live da Montesarchio</p>
+<p>100% Live da Montesarchio</p>
 
-<audio controls autoplay id="player">
+<audio controls>
 <source src="https://sapircast.caster.fm:17620/pr123" type="audio/mpeg">
-<source src="http://sapircast.caster.fm:17620/pr123" type="audio/mpeg">
-Il tuo browser non supporta l'audio.
 </audio>
 
-<p class="live">● IN DIRETTA ORA</p>
-<p style="font-size:13px;margin-top:20px">Se non parte, clicca PLAY qui sopra.<br>Lascia BUTT acceso!</p>
-</div>
+<a class="btn" href="http://sapircast.caster.fm:17620/pr123" target="_blank">▶️ ASCOLTA QUI</a>
 
-<script>
-var a = document.getElementById('player');
-a.volume = 0.8;
-a.play().catch(function(){});
-</script>
+<p class="live">● IN DIRETTA ORA</p>
+<p style="font-size:13px;color:#aaa">Lascia BUTT acceso su ON AIR<br>Se il lettore sopra è silenzioso usa il tasto rosso</p>
+</div>
 </body>
 </html>
