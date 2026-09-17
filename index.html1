@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Radio Montesarchio - Valle Caudina 88.5 FM</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Arial,sans-serif;background:#000;color:#fff;height:100vh;display:flex;flex-direction:column;justify-content:space-between;padding:20px;overflow:hidden}
+.bg{position:fixed;inset:0;background:url('https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&w=1200') center/cover;filter:brightness(0.5);z-index:-2}
+.ov{position:fixed;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.2),rgba(0,0,0,0.8));z-index:-1}
+.top{text-align:center}
+.top h1{color:#FFEB00;font-size:42px;font-weight:900;line-height:0.9;text-shadow:3px 3px 0 #000}
+.top p{color:#FFEB00;font-size:12px;letter-spacing:4px;margin-top:8px;font-weight:700}
+.mid{text-align:center}
+.live{background:#FF0000;color:#fff;padding:5px 14px;border-radius:20px;font-size:11px;font-weight:800;display:inline-block;margin-bottom:14px;animation:blink 1s infinite}
+@keyframes blink{0%,50%{opacity:1}51%,100%{opacity:0.4}}
+.mid h2{font-size:13px;letter-spacing:3px;opacity:0.8;margin-bottom:12px}
+.song{font-size:32px;font-weight:900;font-style:italic;line-height:1}
+.artist{font-size:22px;font-weight:700;margin-top:8px}
+.controls{display:flex;flex-direction:column;align-items:center;gap:14px}
+.play{width:92px;height:92px;background:#FFEB00;border-radius:50%;border:none;display:flex;align-items:center;justify-content:center;box-shadow:0 0 35px rgba(255,235,0,0.7);cursor:pointer}
+.bot{display:flex;justify-content:space-between;align-items:center;background:rgba(0,0,0,0.4);padding:10px 12px;border-radius:14px;font-size:13px}
+.free{color:#FFEB00;border:1px solid #FFEB00;padding:4px 10px;border-radius:20px;font-size:10px;font-weight:700}
+</style>
+</head>
+<body>
+<div class="bg"></div><div class="ov"></div>
+<div class="top"><h1>RADIO<br>MONTESARCHIO</h1><p>VALLE CAUDINA - 88.5 FM</p></div>
+<div class="mid"><div class="live">● LIVE</div><h2>IN ONDA ORA</h2><div class="song">Vita Spericolata</div><div class="artist">Vasco Rossi</div></div>
+<div class="controls">
+<button class="play" onclick="tog()"><svg id="ic1" width="38" height="38" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg><svg id="ic2" style="display:none" width="38" height="38" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg></button>
+<div id="st" style="font-size:12px;opacity:0.8">Tocca PLAY - GRATIS PER SEMPRE</div>
+<audio id="aud" preload="none"><source src="https://sapircast.caster.fm:17620/stream" type="audio/mpeg"><source src="https://sapircast.caster.fm:17620/;" type="audio/mpeg"></audio>
+</div>
+<div class="bot"><span>💬 WhatsApp</span><span class="free">GRATIS PER SEMPRE ∞</span><span>📻 88.5 FM</span></div>
+<script>
+let on=false;const a=document.getElementById('aud');
+function tog(){if(!on){a.play().then(()=>{on=true;ic1.style.display='none';ic2.style.display='block';st.textContent='Stai ascoltando - GRATIS PER SEMPRE'}).catch(()=>{st.textContent='Riprova - Tocca PLAY';a.load();a.play()})}else{a.pause();on=false;ic1.style.display='block';ic2.style.display='none';st.textContent='In pausa - Tocca PLAY'}}
+</script>
+</body>
+</html>
