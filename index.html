@@ -5,20 +5,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Radio Montesarchio</title>
 <style>
-  body{margin:0;background:#0f0f0f;color:white;font-family:Arial;display:flex;align-items:center;justify-content:center;min-height:100vh;padding:20px}
-  .box{background:#1a1a1a;border-radius:20px;padding:30px;max-width:500px;width:100%;text-align:center;border:2px solid #e81e4d}
-  h1{color:#e81e4d}
-  .cstrEmbed{background:white;border-radius:12px;padding:10px}
+body{margin:0;background:#0a0a0a;color:white;font-family:Arial;text-align:center;padding:20px}
+.box{max-width:500px;margin:50px auto;background:#1e1e1e;border-radius:20px;padding:30px;border:3px solid #e81e4d}
+h1{color:#e81e4d;margin:0 0 10px}
+audio{width:100%;margin-top:20px;height:50px}
+.live{color:#0f0;font-weight:bold;margin-top:15px;animation:blink 1s infinite}
+@keyframes blink{50%{opacity:0}}
 </style>
 </head>
 <body>
 <div class="box">
 <h1>🔴 Radio Montesarchio</h1>
-<p>100% Radio Online - In Diretta</p>
-
-<div data-type="newStreamPlayer" data-publicToken="4137a736-34ca-4838-ac0e-fed11d40c0c9" data-theme="light" data-color="e81e4d" data-channelId="" data-rendered="false" class="cstrEmbed"><a href="https://www.caster.fm">Shoutcast Hosting</a></div><script src="//cdn.cloud.caster.fm//widgets/embed.js"></script>
-
-<p style="color:#0f0;margin-top:20px">● IN ONDA ORA</p>
+<p>100% Musica e Diretta Live</p>
+<audio controls autoplay id="player">
+<source src="https://sapircast.caster.fm:17620/rIZ3" type="audio/mpeg">
+<source src="http://sapircast.caster.fm:17620/rIZ3" type="audio/mpeg">
+Il tuo browser non supporta l'audio.
+</audio>
+<p class="live">● IN DIRETTA ORA</p>
+<p style="font-size:12px;color:#aaa;margin-top:20px">Se non parte, clicca PLAY qui sopra.<br>Lascia BUTT acceso sul PC!</p>
 </div>
+<script>
+document.getElementById('player').volume = 0.8;
+</script>
 </body>
 </html>
