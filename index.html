@@ -2,59 +2,39 @@
 <html lang="it">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Radio Montesarchio</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@600;800&display=swap');
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
-body{background:#050a0f;color:#fff;display:flex;justify-content:center;min-height:100vh}
-.app{width:100%;max-width:420px;padding:10px 14px 90px}
-.top{background:rgba(12,20,24,.95);border:1px solid rgba(0,255,208,.15);border-radius:18px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center}
-.logo{text-align:center;line-height:1}
-.logo b{font-size:14px;display:block}
-.logo span{font-size:8px;opacity:.6}
-.live{color:#00ffd0;font-weight:800;display:flex;align-items:center;gap:6px}
-.live i{width:8px;height:8px;background:#ff3b3b;border-radius:50%;display:block;box-shadow:0 0 8px #ff3b3b}
-.now{background:rgba(8,24,28,.9);border:1px solid rgba(0,255,208,.2);border-radius:14px;padding:10px 12px;display:flex;justify-content:space-between;align-items:center;margin:10px 0}
-.now b{color:#00ffd0;font-size:12px}
-.listen{background:#00c8b8;color:#00302c;padding:5px 10px;border-radius:20px;font-size:11px;font-weight:700}
-.card{background:radial-gradient(circle at center,rgba(0,255,208,.07),rgba(5,15,18,.98));border:1px solid rgba(0,255,208,.12);border-radius:24px;padding:18px;text-align:center}
-.onair{color:#00e5ff;font-weight:800;letter-spacing:2px;font-size:13px;margin-bottom:12px}
-.playwrap{position:relative;width:160px;height:160px;margin:0 auto 14px}
-.wave{position:absolute;inset:0;border-radius:50%;border:1px solid rgba(0,255,208,.18);animation:wave 3s infinite}
-@keyframes wave{0%{transform:scale(.8);opacity:.8}100%{transform:scale(1.5);opacity:0}}
-.play{position:absolute;inset:15px;background:linear-gradient(135deg,#00ffd0,#00b8a0);border-radius:50%;border:none;width:130px;height:130px;font-size:48px;color:#00201c;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 0 25px rgba(0,255,208,.5);margin:0 auto;left:0;right:0;top:15px}
-.track small{font-size:10px;color:#00ffd0;opacity:.8;letter-spacing:1px}
-.track h2{font-size:17px;margin:4px 0}
-.bar{display:flex;align-items:center;gap:8px;margin:14px 0 0}
-.p{flex:1;height:4px;background:rgba(255,255,255,.1);border-radius:10px;position:relative}
-.p i{position:absolute;left:0;top:0;bottom:0;width:35%;background:linear-gradient(90deg,#00ffd0,#00e5ff);border-radius:10px;display:block}
-.btns{display:flex;gap:6px;margin-top:12px}
-.btn{flex:1;background:rgba(255,255,255,.06);border:1px solid rgba(0,255,208,.15);border-radius:18px;padding:7px;font-size:10px}
-.wa{margin-top:14px;background:linear-gradient(135deg,rgba(10,30,32,.9),rgba(5,20,22,.9));border:1px solid rgba(0,255,208,.25);border-radius:16px;padding:12px;display:flex;gap:10px;align-items:center}
-.nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:420px;background:rgba(5,12,15,.98);border-top:1px solid rgba(0,255,208,.15);display:flex;justify-content:space-around;padding:8px 0 14px}
-.ni{opacity:.4;font-size:9px;text-align:center}.ni.active{opacity:1;color:#00ffd0}
+body{background:#111;color:#fff;font-family:sans-serif;display:flex;justify-content:center;align-items:center;min-height:100vh;margin:0}
+.card{background:#222;padding:30px;border-radius:20px;text-align:center;max-width:350px;width:90%}
+.onair{color:#0f0;border:1px solid #0f0;display:inline-block;padding:4px 10px;border-radius:20px;font-size:12px;margin-bottom:15px}
+#pb{width:80px;height:80px;border-radius:50%;border:none;background:#ff0055;color:#fff;font-size:35px;cursor:pointer;margin-top:20px}
+.track{margin:15px 0}
+.btns{display:flex;gap:10px;justify-content:center;margin-top:15px}
+.btn{background:#333;padding:8px 15px;border-radius:20px;font-size:12px}
 </style>
 </head>
 <body>
-<div class="app">
-<div class="top"><div>☰</div><div class="logo"><div>📻</div><b>RADIO</b><b>MONTESARCHIO</b><span>LA RADIO DELLA VALLE</span></div><div class="live"><i></i>LIVE</div></div>
-<div class="now"><div><b>IN DIRETTA ORA</b><br><small>Valle Caudina - Diretta</small></div><div class="listen">🎧 1.247</div></div>
 <div class="card">
 <div class="onair">ON AIR</div>
-<div class="playwrap"><div class="wave"></div><div class="wave" style="animation-delay:.5s"></div><div class="wave" style="animation-delay:1s"></div><button class="play" id="pb">▶</button></div>
-<div class="track"><small>IN RIPRODUZIONE</small><h2 id="tit">Radio Montesarchio - Live</h2><p style="font-size:11px;opacity:.5">Web Radio - Valle Caudina</p></div>
-<div class="bar"><div style="font-size:11px;opacity:.5" id="ct">00:00</div><div class="p"><i id="pf"></i></div><div style="font-size:11px;opacity:.5">LIVE</div></div>
-<div class="btns"><div class="btn">Favoriti</div><div class="btn">Condividi</div><div class="btn">Programma</div></div>
+<div class="track"><small>IN RIPRODUZIONE</small><h2>Radio Montesarchio</h2><div style="font-size:11px;opacity:.5" id="ct">00:00</div></div>
+<div class="btns"><div class="btn">Favoriti</div><div class="btn">Condividi</div></div>
+<button id="pb">▶</button>
+<audio id="a" preload="none" crossorigin="anonymous"></audio>
 </div>
+<script>
 const STREAM="https://sapircast.caster.fm:17620/prlZ3";
- let pl=false,sec=0;
-const a=document.getElementById('a'), pb=document.getElementById('pb'),
+let pl=false,sec=0;
+const a=document.getElementById('a'), pb=document.getElementById('pb'), ct=document.getElementById('ct');
 pb.onclick=()=>{
- if(!pl){a.src=STREAM;a.play().then(()=>{pl=true;pb.textContent="❚❚"}).catch(()=>alert("Metti il link Caster.fm"));}
- else {a.pause();a.src="";pl=false;pb.textContent="▶"}
+if(!pl){
+a.src=STREAM;
+a.play().then(()=>{pl=true;pb.textContent="II"}).catch((e)=>{alert("Errore: "+e.message)});
+}else{
+a.pause();a.src="";pl=false;pb.textContent="▶";sec=0;ct.textContent="00:00";
+}
 };
-setInterval(()=>{if(!pl)return;sec++;let m=String(Math.floor(sec/60)).padStart(2,'0');let s=String(sec%60).padStart(2,'0');document.getElementById('ct').textContent=m+":"+s;document.getElementById('pf').style.width=(sec%180)/180*100+"%";},1000);
+setInterval(()=>{if(!pl)return;sec++;let m=String(Math.floor(sec/60)).padStart(2,'0');let s=String(sec%60).padStart(2,'0');ct.textContent=m+":"+s;},1000);
 </script>
 </body>
 </html>
