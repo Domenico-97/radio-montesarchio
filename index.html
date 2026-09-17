@@ -6,8 +6,9 @@
 <title>Radio Montesarchio</title>
 <style>
 body{background:#111;color:#fff;font-family:sans-serif;display:flex;justify-content:center;align-items:center;min-height:100vh;margin:0}
-.card{background:#222;padding:30px;border-radius:20px;text-align:center;max-width:350px;width:90%}
+.card{background:#222;padding:30px;border-radius:20px;text-align:center;max-width:350px;width:90%;box-shadow:0 10px 30px rgba(0,0,0,.5)}
 #pb{width:90px;height:90px;border-radius:50%;border:none;background:#ff0055;color:#fff;font-size:40px;cursor:pointer;margin-top:20px}
+a{color:#ff0055}
 </style>
 </head>
 <body>
@@ -16,19 +17,28 @@ body{background:#111;color:#fff;font-family:sans-serif;display:flex;justify-cont
 <div style="font-size:12px;opacity:.6" id="st">Pronto</div>
 <div style="font-size:11px;opacity:.5" id="ct">00:00</div>
 <button id="pb">▶</button>
-<audio id="a" preload="none"></audio>
+<p style="font-size:12px;margin-top:20px">Se non parte su Chrome:<br><a id="dl" href="http://sapircast.caster.fm:17620/rIZ3" target="_blank">Clicca qui per ascolto diretto</a></p>
+<audio id="a" preload="none" crossorigin="anonymous"></audio>
 </div>
 <script>
-const STREAM="https://sapircast.caster.fm:17620/rIZ3";
+const STREAM_HTTP="http://sapircast.caster.fm:17620/rIZ3";
+const STREAM_HTTPS="https://sapircast.caster.fm:17620/rIZ3";
 let pl=false,sec=0;
 const a=document.getElementById('a'), pb=document.getElementById('pb'), st=document.getElementById('st'), ct=document.getElementById('ct');
 pb.onclick=()=>{
 if(!pl){
-a.src=STREAM;
 st.textContent="Connessione...";
-a.play().then(()=>{pl=true;pb.textContent="II";st.textContent="ON AIR"}).catch(e=>{st.textContent="Errore: "+e.message});
+// Prova prima https, poi http
+a.src=STREAM_HTTPS;
+a.type="audio/mpeg";
+a.play().then(()=>{pl=true;pb.textContent="II";st.textContent="ON AIR - HTTPS"}).catch(()=>{
+console.log("HTTPS fallito, provo HTTP");
+a.src=STREAM_HTTP;
+a.play().then(()=>{pl=true;pb.textContent="II";st.textContent="ON AIR - HTTP"}).catch(e=>{st.textContent="Errore Chrome: apri link diretto sotto";});
+});
 }else{a.pause();a.src="";pl=false;pb.textContent="▶";st.textContent="In pausa";sec=0;ct.textContent="00:00";}
 };
+a.addEventListener('error',()=>{st.textContent="Bloccato da Chrome. Usa link diretto sotto";});
 setInterval(()=>{if(!pl)return;sec++;ct.textContent=String(Math.floor(sec/60)).padStart(2,'0')+":"+String(sec%60).padStart(2,'0');},1000);
 </script>
 </body>
