@@ -2,41 +2,64 @@
 <html lang="it">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Radio Montesarchio - Valle Caudina 88.5 FM</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>Radio Montesarchio</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:Arial,sans-serif;background:#000;color:#fff;height:100vh;display:flex;flex-direction:column;justify-content:space-between;padding:20px;overflow:hidden}
-.bg{position:fixed;inset:0;background:url('https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&w=1200') center/cover;filter:brightness(0.5);z-index:-2}
-.ov{position:fixed;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.2),rgba(0,0,0,0.8));z-index:-1}
-.top{text-align:center}
-.top h1{color:#FFEB00;font-size:42px;font-weight:900;line-height:0.9;text-shadow:3px 3px 0 #000}
-.top p{color:#FFEB00;font-size:12px;letter-spacing:4px;margin-top:8px;font-weight:700}
-.mid{text-align:center}
-.live{background:#FF0000;color:#fff;padding:5px 14px;border-radius:20px;font-size:11px;font-weight:800;display:inline-block;margin-bottom:14px;animation:blink 1s infinite}
-@keyframes blink{0%,50%{opacity:1}51%,100%{opacity:0.4}}
-.mid h2{font-size:13px;letter-spacing:3px;opacity:0.8;margin-bottom:12px}
-.song{font-size:32px;font-weight:900;font-style:italic;line-height:1}
-.artist{font-size:22px;font-weight:700;margin-top:8px}
-.controls{display:flex;flex-direction:column;align-items:center;gap:14px}
-.play{width:92px;height:92px;background:#FFEB00;border-radius:50%;border:none;display:flex;align-items:center;justify-content:center;box-shadow:0 0 35px rgba(255,235,0,0.7);cursor:pointer}
-.bot{display:flex;justify-content:space-between;align-items:center;background:rgba(0,0,0,0.4);padding:10px 12px;border-radius:14px;font-size:13px}
-.free{color:#FFEB00;border:1px solid #FFEB00;padding:4px 10px;border-radius:20px;font-size:10px;font-weight:700}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@600;800&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
+body{background:#050a0f;color:#fff;display:flex;justify-content:center;min-height:100vh}
+.app{width:100%;max-width:420px;padding:10px 14px 90px}
+.top{background:rgba(12,20,24,.95);border:1px solid rgba(0,255,208,.15);border-radius:18px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center}
+.logo{text-align:center;line-height:1}
+.logo b{font-size:14px;display:block}
+.logo span{font-size:8px;opacity:.6}
+.live{color:#00ffd0;font-weight:800;display:flex;align-items:center;gap:6px}
+.live i{width:8px;height:8px;background:#ff3b3b;border-radius:50%;display:block;box-shadow:0 0 8px #ff3b3b}
+.now{background:rgba(8,24,28,.9);border:1px solid rgba(0,255,208,.2);border-radius:14px;padding:10px 12px;display:flex;justify-content:space-between;align-items:center;margin:10px 0}
+.now b{color:#00ffd0;font-size:12px}
+.listen{background:#00c8b8;color:#00302c;padding:5px 10px;border-radius:20px;font-size:11px;font-weight:700}
+.card{background:radial-gradient(circle at center,rgba(0,255,208,.07),rgba(5,15,18,.98));border:1px solid rgba(0,255,208,.12);border-radius:24px;padding:18px;text-align:center}
+.onair{color:#00e5ff;font-weight:800;letter-spacing:2px;font-size:13px;margin-bottom:12px}
+.playwrap{position:relative;width:160px;height:160px;margin:0 auto 14px}
+.wave{position:absolute;inset:0;border-radius:50%;border:1px solid rgba(0,255,208,.18);animation:wave 3s infinite}
+@keyframes wave{0%{transform:scale(.8);opacity:.8}100%{transform:scale(1.5);opacity:0}}
+.play{position:absolute;inset:15px;background:linear-gradient(135deg,#00ffd0,#00b8a0);border-radius:50%;border:none;width:130px;height:130px;font-size:48px;color:#00201c;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 0 25px rgba(0,255,208,.5);margin:0 auto;left:0;right:0;top:15px}
+.track small{font-size:10px;color:#00ffd0;opacity:.8;letter-spacing:1px}
+.track h2{font-size:17px;margin:4px 0}
+.bar{display:flex;align-items:center;gap:8px;margin:14px 0 0}
+.p{flex:1;height:4px;background:rgba(255,255,255,.1);border-radius:10px;position:relative}
+.p i{position:absolute;left:0;top:0;bottom:0;width:35%;background:linear-gradient(90deg,#00ffd0,#00e5ff);border-radius:10px;display:block}
+.btns{display:flex;gap:6px;margin-top:12px}
+.btn{flex:1;background:rgba(255,255,255,.06);border:1px solid rgba(0,255,208,.15);border-radius:18px;padding:7px;font-size:10px}
+.wa{margin-top:14px;background:linear-gradient(135deg,rgba(10,30,32,.9),rgba(5,20,22,.9));border:1px solid rgba(0,255,208,.25);border-radius:16px;padding:12px;display:flex;gap:10px;align-items:center}
+.nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:420px;background:rgba(5,12,15,.98);border-top:1px solid rgba(0,255,208,.15);display:flex;justify-content:space-around;padding:8px 0 14px}
+.ni{opacity:.4;font-size:9px;text-align:center}.ni.active{opacity:1;color:#00ffd0}
 </style>
 </head>
 <body>
-<div class="bg"></div><div class="ov"></div>
-<div class="top"><h1>RADIO<br>MONTESARCHIO</h1><p>VALLE CAUDINA - 88.5 FM</p></div>
-<div class="mid"><div class="live">● LIVE</div><h2>IN ONDA ORA</h2><div class="song">Vita Spericolata</div><div class="artist">Vasco Rossi</div></div>
-<div class="controls">
-<button class="play" onclick="tog()"><svg id="ic1" width="38" height="38" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg><svg id="ic2" style="display:none" width="38" height="38" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg></button>
-<div id="st" style="font-size:12px;opacity:0.8">Tocca PLAY - GRATIS PER SEMPRE</div>
-<audio id="aud" preload="none"><source src="https://sapircast.caster.fm:17620/stream" type="audio/mpeg"><source src="https://sapircast.caster.fm:17620/;" type="audio/mpeg"></audio>
+<div class="app">
+<div class="top"><div>☰</div><div class="logo"><div>📻</div><b>RADIO</b><b>MONTESARCHIO</b><span>LA RADIO DELLA VALLE</span></div><div class="live"><i></i>LIVE</div></div>
+<div class="now"><div><b>IN DIRETTA ORA</b><br><small>Valle Caudina - Diretta</small></div><div class="listen">🎧 1.247</div></div>
+<div class="card">
+<div class="onair">ON AIR</div>
+<div class="playwrap"><div class="wave"></div><div class="wave" style="animation-delay:.5s"></div><div class="wave" style="animation-delay:1s"></div><button class="play" id="pb">▶</button></div>
+<div class="track"><small>IN RIPRODUZIONE</small><h2 id="tit">Radio Montesarchio - Live</h2><p style="font-size:11px;opacity:.5">Web Radio - Valle Caudina</p></div>
+<div class="bar"><div style="font-size:11px;opacity:.5" id="ct">00:00</div><div class="p"><i id="pf"></i></div><div style="font-size:11px;opacity:.5">LIVE</div></div>
+<div class="btns"><div class="btn">Favoriti</div><div class="btn">Condividi</div><div class="btn">Programma</div></div>
 </div>
-<div class="bot"><span>💬 WhatsApp</span><span class="free">GRATIS PER SEMPRE ∞</span><span>📻 88.5 FM</span></div>
+<div class="wa"><div style="font-size:28px">💬</div><div><b style="font-size:13px">Salutaci su WhatsApp</b><div style="font-size:10px;opacity:.6">Manda un saluto — ti leggiamo in diretta!</div></div></div>
+</div>
+<div class="nav"><div class="ni active">🏠<br>Diretta</div><div class="ni">🎙️<br>Podcast</div><div class="ni">📰<br>News</div><div class="ni">👤<br>Profilo</div></div>
+<audio id="a"></audio>
 <script>
-let on=false;const a=document.getElementById('aud');
-function tog(){if(!on){a.play().then(()=>{on=true;ic1.style.display='none';ic2.style.display='block';st.textContent='Stai ascoltando - GRATIS PER SEMPRE'}).catch(()=>{st.textContent='Riprova - Tocca PLAY';a.load();a.play()})}else{a.pause();on=false;ic1.style.display='block';ic2.style.display='none';st.textContent='In pausa - Tocca PLAY'}}
+const STREAM="https://stream.caster.fm/your-link-here";
+const a=document.getElementById('a'), pb=document.getElementById('pb');
+let pl=false,sec=0;
+pb.onclick=()=>{
+ if(!pl){a.src=STREAM;a.play().then(()=>{pl=true;pb.textContent="❚❚"}).catch(()=>alert("Metti il link Caster.fm"));}
+ else {a.pause();a.src="";pl=false;pb.textContent="▶"}
+};
+setInterval(()=>{if(!pl)return;sec++;let m=String(Math.floor(sec/60)).padStart(2,'0');let s=String(sec%60).padStart(2,'0');document.getElementById('ct').textContent=m+":"+s;document.getElementById('pf').style.width=(sec%180)/180*100+"%";},1000);
 </script>
 </body>
 </html>
