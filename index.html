@@ -47,14 +47,9 @@ body{background:#050a0f;color:#fff;display:flex;justify-content:center;min-heigh
 <div class="bar"><div style="font-size:11px;opacity:.5" id="ct">00:00</div><div class="p"><i id="pf"></i></div><div style="font-size:11px;opacity:.5">LIVE</div></div>
 <div class="btns"><div class="btn">Favoriti</div><div class="btn">Condividi</div><div class="btn">Programma</div></div>
 </div>
-<div class="wa"><div style="font-size:28px">💬</div><div><b style="font-size:13px">Salutaci su WhatsApp</b><div style="font-size:10px;opacity:.6">Manda un saluto — ti leggiamo in diretta!</div></div></div>
-</div>
-<div class="nav"><div class="ni active">🏠<br>Diretta</div><div class="ni">🎙️<br>Podcast</div><div class="ni">📰<br>News</div><div class="ni">👤<br>Profilo</div></div>
-<audio id="a"></audio>
-<script>
-const STREAM="https://stream.caster.fm/your-link-here";
-const a=document.getElementById('a'), pb=document.getElementById('pb');
-let pl=false,sec=0;
+const STREAM="https://sapircast.caster.fm:17620/prlZ3";
+ let pl=false,sec=0;
+const a=document.getElementById('a'), pb=document.getElementById('pb'),
 pb.onclick=()=>{
  if(!pl){a.src=STREAM;a.play().then(()=>{pl=true;pb.textContent="❚❚"}).catch(()=>alert("Metti il link Caster.fm"));}
  else {a.pause();a.src="";pl=false;pb.textContent="▶"}
