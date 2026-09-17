@@ -65,7 +65,6 @@ audio{display:none}
     <div class="logo"><h1>RADIO<br>MONTESARCHIO</h1><span>VALLE CAUDINA</span></div>
     <div class="live-dot">LIVE</div>
   </div>
-
   <div class="card">
     <div class="card-left">
       <div class="wave">〰️</div>
@@ -73,7 +72,6 @@ audio{display:none}
     </div>
     <div class="listeners">🎧 <span id="count">1</span> ascoltatori</div>
   </div>
-
   <div class="main">
     <div class="onair">ON AIR</div>
     <div class="play-wrap">
@@ -95,25 +93,21 @@ audio{display:none}
       <div class="act">🕒 Programma</div>
     </div>
   </div>
-
-  <a class="whatsapp" href="https://wa.me/393000000000?text=Ciao%20Radio%20Montesarchio!" target="_blank">
+  <a class="whatsapp" href="https://wa.me/393291465093?text=Ciao%20Radio%20Montesarchio!%20Vi%20ascolto%20dalla%20Valle%20Caudina" target="_blank">
     <div class="wa-icon">💬</div>
-    <div><b>Salutaci su WhatsApp</b><p>Manda un saluto o un vocale — ti leggiamo in diretta!</p></div>
+    <div><b>Salutaci su WhatsApp</b><p>329 146 5093 - Mandaci un vocale in diretta!</p></div>
   </a>
-
   <div class="bottom">
     <div class="b-item active"><div>⌂</div>Diretta</div>
     <div class="b-item"><div>◉</div>Podcast</div>
     <div class="b-item"><div>📰</div>News</div>
     <div class="b-item"><div>👤</div>Profilo</div>
   </div>
-
   <audio id="audio" preload="none">
     <source src="http://sapircast.caster.fm:17620/" type="audio/mpeg">
     <source src="http://sapircast.caster.fm:17620/pr123.m3u" type="audio/mpeg">
   </audio>
 </div>
-
 <script>
 let playing=false;
 const audio=document.getElementById('audio');
@@ -128,8 +122,7 @@ function togglePlay(){
   }
 }
 function share(){if(navigator.share){navigator.share({title:'Radio Montesarchio',url:location.href})}else{alert('Condividi: '+location.href)}}
-// contatore finto che sale
-setInterval(()=>{let c=document.getElementById('count');c.innerText= Math.floor(1+Math.random()*5)},5000);
+setInterval(()=>{let c=document.getElementById('count');c.innerText= Math.floor(1+Math.random()*6)},4000);
 </script>
 </body>
 </html>
